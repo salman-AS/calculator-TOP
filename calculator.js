@@ -13,6 +13,7 @@ clearBtn.addEventListener("click", clear);
 
 dltBtn.addEventListener("click", () => {
     prmScreen.textContent = prmScreen.textContent.slice(0, -1);
+    checkForDot();
 })
 
 operands.forEach(operand => operand.addEventListener("click", function () {
@@ -20,16 +21,17 @@ operands.forEach(operand => operand.addEventListener("click", function () {
         clear();
         flag = 0;
     }
-    if (prmScreen.textContent.includes('.'))
-        document.querySelector('.dot').classList.add('disabledbutton');
-    else
-        document.querySelector('.dot').classList.remove('disabledbutton');
+    checkForDot();
     if (prmScreen.textContent.length < 13)
         prmScreen.textContent = prmScreen.textContent + operand.textContent;
 }))
 
 operators.forEach(operator => operator.addEventListener("click", function () {
-
+    checkForDot();
+    if (prmScreen.textContent.includes('.'))
+        document.querySelector('.dot').classList.add('disabledbutton');
+    else
+        document.querySelector('.dot').classList.remove('disabledbutton');
     if (scndScreen.textContent == '' && prmScreen.textContent != '') {
         operand1 = prmScreen.textContent;
         scndScreen.textContent = prmScreen.textContent;
@@ -77,7 +79,7 @@ function Calculator(op1, op2, oprtr) {
         "-": (a, b) => a - b,
         "+": (a, b) => +a + +b,
         "*": (a, b) => a * b,
-        "/": (a, b) => { a / b },
+        "/": (a, b) => a / b,
     };
 
     this.calculate = function (a, b, op) {
@@ -94,10 +96,17 @@ function Calculator(op1, op2, oprtr) {
 }
 
 function clear() {
+    document.querySelector('.dot').classList.remove('disabledbutton');
     prmScreen.textContent = '';
     scndScreen.textContent = '';
     result = 0;
     operand1 = 0;
     prevoprtr = '';
 }
-console.log(clearBtn)
+
+function checkForDot(){
+    if (prmScreen.textContent.includes('.'))
+        document.querySelector('.dot').classList.add('disabledbutton');
+    else
+        document.querySelector('.dot').classList.remove('disabledbutton');
+}
