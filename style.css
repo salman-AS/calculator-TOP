@@ -1,0 +1,78 @@
+div {
+    border: 1px solid red;
+    margin: 5px;
+    padding: 10px;
+}
+
+#container {
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+
+#screen {
+    width: 270px;
+    height: 100px;
+
+}
+
+#secondary,
+#primary {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+#secondary {
+    margin-top: -5px;
+    height: 50px;
+    font-size: 30px;
+}
+
+#primary {
+    height: 56px;
+    font-size: 40px;
+}
+
+#primary>span {
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+}
+
+#secondary>span {
+    position: absolute;
+    top: 0px;
+    left: 5px;
+}
+
+.btn {
+    width: 43px;
+    height: 40px;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+#zero {
+    width: 193px;
+}
+
+.btn>* {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -50px;
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
